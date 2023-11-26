@@ -5,7 +5,7 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">API de registro y mantenimiento de matrículas de una universidad desarrollada en Nestjs </p>
+  <p align="center">API REST para el registro y mantenimiento de matrículas de universidad desarrollada en Nestjs</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -23,8 +23,13 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
+Esta API REST permite el registro y mantenimiento de las matrículas de una universidad. Está diseñada para ser fácil de usar y altamente eficiente, lo que la hace ideal para cualquier sistema que necesite gestionar las matrículas de los estudiantes.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Características
+- Registro de matrículas: Esta API permite registrar nuevas matrículas en la base de datos de la universidad.
+- Consulta de matrículas: Esta API permite consultar las matrículas existentes en la base de datos de la universidad.
+- Actualización de matrículas: Esta API permite actualizar las matrículas existentes en la base de datos de la universidad.
+- Eliminación de matrículas: Esta API permite eliminar las matrículas existentes en la base de datos de la universidad.
 
 ## Installation
 
@@ -181,3 +186,15 @@ $ npm run start:dev
 - **Ruta:** `/api/enrollments/id`
 - **Método:** `DELETE`
 - **Descripción:** ELimina una Matricula por Id.
+---
+## Despliegue
+Esta API está desplegada en Render, lo que significa que puedes acceder a ella desde cualquier lugar a través de Internet.
+Para llenar la base de datos con informacion de prueba se utilizó la herramienta **Retool** [www.retool.com](https://retool.com/)
+- **Base_URI:** https://unimatricula-api.onrender.com/api/
+
+- **GET** /enrollments: Obtiene todas las matrículas.
+- **POST** /enrollments: Registra una nueva matrícula.
+- **GET** /enrollments/:id: Obtiene una matrícula específica.
+- **PATCH** /enrollments/:id: Actualiza una matrícula específica.
+- **DELETE** /enrollments/:id: Elimina una matrícula específica.
+
