@@ -5,7 +5,7 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+  <p align="center">API REST para el registro y mantenimiento de matrículas de universidad desarrollada en Nestjs</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -23,8 +23,13 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
+Esta API REST permite el registro y mantenimiento de las matrículas de una universidad. Está diseñada para ser fácil de usar y altamente eficiente, lo que la hace ideal para cualquier sistema que necesite gestionar las matrículas de los estudiantes.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Características
+- Registro de matrículas: Esta API permite registrar nuevas matrículas en la base de datos de la universidad.
+- Consulta de matrículas: Esta API permite consultar las matrículas existentes en la base de datos de la universidad.
+- Actualización de matrículas: Esta API permite actualizar las matrículas existentes en la base de datos de la universidad.
+- Eliminación de matrículas: Esta API permite eliminar las matrículas existentes en la base de datos de la universidad.
 
 ## Installation
 
@@ -35,39 +40,161 @@ $ npm install
 ## Running the app
 
 ```bash
-# development
-$ npm run start
-
 # watch mode
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
+## Endpoints
+### CRUD Docente
+- **Ruta:** `/api/teachers`
+- **Método:** `POST`
+- **Body:**
+  ```bash
+  # JSON
+   {
+	  "name": "test_teacher_name"
+   }
+  ``` 
+- **Descripción:** Crea un Docente.
+---
+- **Ruta:** `/api/teachers`
+- **Método:** `GET`
+- **Descripción:** Lista de Docentes.
+---
+- **Ruta:** `/api/teachers/id`
+- **Método:** `GET`
+- **Descripción:** Docente por Id.
+---
+- **Ruta:** `/api/teachers/id`
+- **Método:** `PATCH`.
+- **Body:**
+  ```bash
+  # JSON
+   {
+	  "name": "edited_name_teacher"
+   }
+  ``` 
+- **Descripción:** Edita un Docente.
+---
+- **Ruta:** `/api/teachers/id`
+- **Método:** `DELETE`
+- **Descripción:** ELimina un Docente por Id.
+---
+---
+### CRUD Curso
+- **Ruta:** `/api/courses`
+- **Método:** `POST`
+- **Body:**
+  ```bash
+  # JSON
+   {
+  	"name": "test course",
+  	"teacherId": 9
+   }
+  ``` 
+- **Descripción:** Crea un Curso.
+---
+- **Ruta:** `/api/courses`
+- **Método:** `GET`
+- **Descripción:** Lista de Cursos.
+---
+- **Ruta:** `/api/courses/id`
+- **Método:** `GET`
+- **Descripción:** Curso por Id.
+---
+- **Ruta:** `/api/courses/id`
+- **Método:** `PATCH`.
+- **Body:**
+  ```bash
+  {
+	  "name": "test_course_edited"
+  }
+  ``` 
+- **Descripción:** Edita un Curso.
+---
+- **Ruta:** `/api/courses/id`
+- **Método:** `DELETE`
+- **Descripción:** ELimina un Curso por Id.
+---
+---
+### CRUD Estudiante
+- **Ruta:** `/api/students`
+- **Método:** `POST`
+- **Body:**
+  ```bash
+  # JSON
+   {
+	   "name": "test_student"
+   }
+  ``` 
+- **Descripción:** Crea un Estudiante.
+---
+- **Ruta:** `/api/students`
+- **Método:** `GET`
+- **Descripción:** Lista de Estudiante.
+---
+- **Ruta:** `/api/students/id`
+- **Método:** `GET`
+- **Descripción:** Estudiante por Id.
+---
+- **Ruta:** `/api/students/id`
+- **Método:** `PATCH`.
+- **Body:**
+  ```bash
+  {
+	  "name": "test_estudent_edited"
+  }
+  ``` 
+- **Descripción:** Edita un Estudiante.
+---
+- **Ruta:** `/api/students/id`
+- **Método:** `DELETE`
+- **Descripción:** ELimina un Estudiante por Id.
+---
+---
+### CRUD Matricula
+- **Ruta:** `/api/enrollments`
+- **Método:** `POST`
+- **Body:**
+  ```bash
+  # JSON
+   {
+  	"semester": "2023-1",
+  	"courseId": 7,
+  	"studentId": 3
+  }
+  ``` 
+- **Descripción:** Crea una Matricula.
+---
+- **Ruta:** `/api/enrollments`
+- **Método:** `GET`
+- **Descripción:** Lista de Matriculas.
+---
+- **Ruta:** `/api/enrollments/id`
+- **Método:** `GET`
+- **Descripción:** Matricula por Id.
+---
+- **Ruta:** `/api/enrollments/id`
+- **Método:** `PATCH`.
+- **Body:**
+  ```bash
+  {
+	  "semester": "2023-2"
+  }
+  ``` 
+- **Descripción:** Edita una Matricula.
+---
+- **Ruta:** `/api/enrollments/id`
+- **Método:** `DELETE`
+- **Descripción:** ELimina una Matricula por Id.
+---
+## Despliegue
+Esta API está desplegada en Render, lo que significa que puedes acceder a ella desde cualquier lugar a través de Internet.
+Para llenar la base de datos con informacion de prueba se utilizó la herramienta **Retool** [www.retool.com](https://retool.com/)
+- **Base_URI:** https://unimatricula-api.onrender.com/api/
 
-## Test
+- **GET** /enrollments: Obtiene todas las matrículas.
+- **POST** /enrollments: Registra una nueva matrícula.
+- **GET** /enrollments/:id: Obtiene una matrícula específica.
+- **PATCH** /enrollments/:id: Actualiza una matrícula específica.
+- **DELETE** /enrollments/:id: Elimina una matrícula específica.
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
