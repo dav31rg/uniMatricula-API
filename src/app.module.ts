@@ -16,11 +16,27 @@ import { AppService } from './app.service';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.POSTGRES_HOST,
-      port: parseInt(process.env.POSTGRES_PORT),
-      username: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DB,
+      host:
+        process.env.NODE_ENV === 'production'
+          ? process.env.POSTGRES_HOST
+          : process.env.POSTGRES_HOST_LOCAL,
+      port: parseInt(
+        process.env.NODE_ENV === 'production'
+          ? process.env.POSTGRES_PORT
+          : process.env.POSTGRES_PORT_LOCAL,
+      ),
+      username:
+        process.env.NODE_ENV === 'production'
+          ? process.env.POSTGRES_USER
+          : process.env.POSTGRES_USER_LOCAL,
+      password:
+        process.env.NODE_ENV === 'production'
+          ? process.env.POSTGRES_PASSWORD
+          : process.env.POSTGRES_PASSWORD_LOCAL,
+      database:
+        process.env.NODE_ENV === 'production'
+          ? process.env.POSTGRES_DB
+          : process.env.POSTGRES_DB_LOCAL,
       synchronize: true,
       logging: true,
       autoLoadEntities: true,
