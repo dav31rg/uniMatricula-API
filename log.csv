@@ -1,0 +1,10 @@
+Request:GET, Duration:39
+Request:GET, Duration:25
+Request:GET, Duration:21
+Request:GET, Duration:19
+Request:GET, endpoint://api/students, Duration:43
+Request:GET, endpoint://api/students, Duration:28
+Request:GET, endpoint://api/courses, Duration:29
+Request:GET, endpoint://api/courses, Duration:28
+Request:POST, endpoint://api/courses, Duration:107
+Request:POST, endpoint://api/courses, Duration:107
