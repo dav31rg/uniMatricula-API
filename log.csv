@@ -8,3 +8,5 @@ Request:GET, endpoint://api/courses, Duration:29
 Request:GET, endpoint://api/courses, Duration:28
 Request:POST, endpoint://api/courses, Duration:107
 Request:POST, endpoint://api/courses, Duration:107
+Request:GET, endpoint:/api/enrollments, Duration:67
+Request:GET, endpoint:/api/enrollments, Duration:52
