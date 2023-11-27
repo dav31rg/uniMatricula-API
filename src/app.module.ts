@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { TeacherModule } from './teacher/teacher.module';
@@ -7,6 +7,7 @@ import { StudentModule } from './student/student.module';
 import { EnrollmentModule } from './enrollment/enrollment.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { logger } from './middleware/logging.middleware';
 
 @Module({
   imports: [
@@ -45,8 +46,13 @@ import { AppService } from './app.service';
     CourseModule,
     StudentModule,
     EnrollmentModule,
+    AppModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(logger).forRoutes('*');
+  }
+}
